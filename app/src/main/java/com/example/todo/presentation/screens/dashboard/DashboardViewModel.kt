@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.todo.data.model.TodoItem
 import com.example.todo.data.repository.TodoRepository
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -117,6 +118,17 @@ class DashboardViewModel @Inject constructor(
         }
     }
 
+    fun sendPasswordReset(email: String, onSuccess: () -> Unit,
+                          onError: (String) -> Unit){
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    onSuccess()
+                } else {
+                    onError(task.exception?.message ?: "An error occurred")
+                }
+            }
+    }
 }
 
 

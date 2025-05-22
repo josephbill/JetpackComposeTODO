@@ -80,6 +80,31 @@ implementation("com.google.firebase:firebase-database-ktx")
    //firebase storage
    implementation("com.google.firebase:firebase-storage")
 
+### API integration 
+Consuming data from an api endpoint i.e. /tasks
+Key Implementations
+// retrofit android library to communicate data over a network/internet 
+implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+// convert to gson , so that we parse the json object which can be 
+// converted to a model class 
+implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+// logging to capture all process as communication over the network 
+// happens 
+implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
+// android expects all communications to be done over https : django 
+projects run on http  
+// dummy ngrok :: to server our local project over the internet 
+
+### STEPS TO INTEGRATE APIS ON ANDROID 
+1. You need a network communication lib package i.e. retrofit , volley ,
+AndroidNetworking 
+2. API url endpoint i.e. the ngrok process , exposed on https 
+3. Endpoint should return data preferably a JSON content 
+4. The JSON content will represent data classes where each object notation is 
+a data class 
+5. Create an interface class to establish the retrofit instances
+for the HTTP verbs : ie GET POST DELETE PUT PATCH
 
 
 
