@@ -73,6 +73,9 @@ fun DashboardScreen(
                        popUpTo("dashboard")
                        {inclusive = true}
                    }
+               },
+               onNavigateToApi = {
+                   navController.navigate("apiroute")
                }
            )
        } ,

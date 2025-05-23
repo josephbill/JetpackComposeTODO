@@ -21,7 +21,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun DrawerContent(
     onNavigateToHome: () -> Unit,
-    onLogout: () -> Unit
+    onLogout: () -> Unit,
+    onNavigateToApi: () -> Unit
 ){
    Surface(
        modifier = Modifier.width(280.dp).fillMaxHeight()
@@ -46,6 +47,12 @@ fun DrawerContent(
                text = "Home",
                color = MaterialTheme.colorScheme.onSurface,
                modifier = Modifier.clickable { onNavigateToHome() }
+                   .padding(vertical = 12.dp)
+           )
+           Text(
+               text = "Api Screen",
+               color = MaterialTheme.colorScheme.onSurface,
+               modifier = Modifier.clickable { onNavigateToApi() }
                    .padding(vertical = 12.dp)
            )
            Text(

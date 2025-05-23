@@ -18,7 +18,7 @@ interface TaskApiService {
     // companion object : this object is accessible in any class
     // implementing the interface
     companion object{
-        private val base_url = "" // server link , ngrok link
+        private val base_url = "https://5235-197-237-118-180.ngrok-free.app/" // server link , ngrok link
         // function to create connection to endpoint
         fun create(): TaskApiService {
             // return retrofit which set's up our network communication

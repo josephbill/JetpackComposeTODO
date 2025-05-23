@@ -15,14 +15,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.todo.data.repository.ApiRepository
+import com.example.todo.data.services.TaskApiService
 import com.example.todo.presentation.components.ApiCard
 import com.example.todo.presentation.components.TodoItemCard
 
 @Composable
 fun ApiDashboard(
     navController: NavController,
-    viewModel: ApiViewModel = hiltViewModel()
+    viewModel: ApiViewModel = viewModel(
+        factory = ApiViewModelFactory(ApiRepository(
+            TaskApiService.create()
+        ))
+    )
 ){
     //reference for items
     val tasks by viewModel.tasks
